@@ -1,0 +1,10 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Docker
+*.log
+Dockerfile.dev
+docker-compose.override.yml
