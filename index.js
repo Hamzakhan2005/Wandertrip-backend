@@ -38,20 +38,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} 🚀`);
 });
-
-app.get("/api/test-booking", async (req, res) => {
-  try {
-    const newBooking = new Booking({
-      userId: "1234567890abcdef",
-      tripId: "abcdef1234567890",
-      status: "confirmed",
-      amountPaid: 5000,
-    });
-
-    await newBooking.save();
-    res.status(200).json({ success: true, booking: newBooking });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
