@@ -1,8 +1,12 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./config/db");
-const Booking = require("./models/Booking");
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import connectDB from "./config/db.js";
+
+import tripRoutes from "./routes/tripRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import destinationRoutes from "./routes/destinationRoutes.js";
+import bookingRoutes from "./routes/bookingRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -11,27 +15,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/trips", tripRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/destinations", destinationRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 // Health check route
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "Backend is live!" });
-});
-app.get("/api/test-booking", async (req, res) => {
-  try {
-    const newBooking = new Booking({
-      user: "665a1234c9e9b1f4a3d2e678",
-      trip: "665b5678e2c5a3f8d9f4c123",
-      amount: 1500,
-      paymentStatus: "pending",
-      paymentMethod: "upi",
-    });
-
-    await newBooking.save();
-    res.status(200).json({ success: true, booking: newBooking });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
-  }
 });
 
 const PORT = process.env.PORT || 5000;

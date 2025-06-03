@@ -1,18 +1,11 @@
-const Booking = require("./models/Booking"); // adjust path as needed
+import express from "express";
+import {
+  getBookings,
+  createBooking,
+} from "../controllers/bookingController.js";
 
-app.get("/api/test-booking", async (req, res) => {
-  try {
-    const newBooking = new Booking({
-      userId: "1234567890abcdef",
-      tripId: "abcdef1234567890",
-      status: "confirmed",
-      amountPaid: 5000,
-    });
+const router = express.Router();
 
-    await newBooking.save();
-    res.status(200).json({ success: true, booking: newBooking });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
+router.route("/").get(getBookings).post(createBooking);
+
+export default router;
