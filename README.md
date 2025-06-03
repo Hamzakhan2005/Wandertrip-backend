@@ -13,8 +13,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Hamzakhan2005/wandert-backend.git
-cd wandert-backend
+git clone https://github.com/Hamzakhan2005/Wandertrip-backend.git
+cd Wandertrip-backend
 ```
 📌 Available Routes
 Users
