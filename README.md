@@ -13,7 +13,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/wandert-backend.git
+git clone https://github.com/Hamzakhan2005/wandert-backend.git
 cd wandert-backend
 ```
 📌 Available Routes
