@@ -1,4 +1,4 @@
-import Booking from "../models/bookingModel.js";
+import Booking from "../models/Booking.js";
 
 export const getBookings = async (req, res) => {
   try {
